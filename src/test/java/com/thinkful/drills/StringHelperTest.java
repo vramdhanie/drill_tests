@@ -10,10 +10,11 @@ import org.junit.Test;
 public class StringHelperTest {
   @Test
   public void isNumericTest() {
-    StringHelper helper = new StringHelper();
+    StringHelper helper = new StringHelper("20");
+    StringHelper helper2 = new StringHelper("abc");
 
-    assertTrue("20 should be numeric", helper.isNumeric("20"));
-    assertFalse("abc should not be numeric", helper.isNumeric("abc"));
+    assertTrue("20 should be numeric", helper.isNumeric());
+    assertFalse("abc should not be numeric", helper2.isNumeric());
   }
 
 
