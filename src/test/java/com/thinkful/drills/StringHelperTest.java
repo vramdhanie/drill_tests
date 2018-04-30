@@ -1,5 +1,6 @@
 package com.thinkful.drills;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -11,14 +12,16 @@ public class StringHelperTest {
   @Test
   public void isNumericTest() {
     StringHelper helper = new StringHelper("20");
-    StringHelper helper2 = new StringHelper("abc");
-    StringHelper helper3 = new StringHelper("3.14");
-    StringHelper helper4 = new StringHelper("-1");
-
     assertTrue("Integer - 20 should be numeric", helper.isNumeric());
-    assertFalse("abc should not be numeric", helper2.isNumeric());
-    assertTrue("Real - 3.14 should be numeric", helper3.isNumeric());
-    assertTrue("Negative - -1 should be numeric", helper4.isNumeric());
+    
+    helper.setValue("abc");
+    assertFalse("abc should not be numeric", helper.isNumeric());
+
+    helper.setValue("3.14");
+    assertTrue("Real - 3.14 should be numeric", helper.isNumeric());
+
+    helper.setValue("-1");
+    assertTrue("Negative - -1 should be numeric", helper.isNumeric());
   }
 
   @Test
@@ -33,5 +36,25 @@ public class StringHelperTest {
     assertFalse("should not contain \"Hereis\"", helper.contains("Hereis"));
   }
 
+  @Test
+  public void toTitleCaseTest() {
+    StringHelper helper = new StringHelper("abc");
+    assertEquals("abc should be Abc", "Abc", helper.toTitleCase());
 
+    helper.setValue("ABC");
+    assertEquals("ABC should be Abc", "Abc", helper.toTitleCase());
+
+    helper.setValue("the wind in the willows");
+    assertEquals("\"the wind in the willows\" should be \"The Wind In The Willows\"", 
+          "The Wind In The Willows", helper.toTitleCase());
+
+    helper.setValue("aBc");
+    assertEquals("aBc should be Abc", "Abc", helper.toTitleCase());
+    
+    helper.setValue("");
+    assertEquals("\"\" should be \"\"", "", helper.toTitleCase());
+
+    helper.setValue("123");
+    assertEquals("\"123\" should be \"123\"", "123", helper.toTitleCase());
+  }
 }
