@@ -2,3 +2,4 @@ build/
 bin/
 .sts4-cache/
 .settings/
+src/main/java/com/thinkful/drills/StringHelper.java
