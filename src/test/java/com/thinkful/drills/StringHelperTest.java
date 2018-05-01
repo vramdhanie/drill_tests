@@ -58,6 +58,7 @@ public class StringHelperTest {
     assertEquals("\"123\" should be \"123\"", "123", helper.toTitleCase());
   }
 
+  @Test
   public void padTest() {
     StringHelper helper = new StringHelper("inferno");
     assertEquals("pad a single character to beginning of String", "ainferno", helper.pad(1, 'a'));
