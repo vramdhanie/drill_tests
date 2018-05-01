@@ -57,4 +57,16 @@ public class StringHelperTest {
     helper.setValue("123");
     assertEquals("\"123\" should be \"123\"", "123", helper.toTitleCase());
   }
+
+  public void padTest() {
+    StringHelper helper = new StringHelper("inferno");
+    assertEquals("pad a single character to beginning of String", "ainferno", helper.pad(1, 'a'));
+    assertEquals("pad a single character to end of String", "infernoa", helper.pad(-1, 'a'));
+    assertEquals("pad 5 characters to beginning of String", "aaaaainferno", helper.pad(5, 'a'));
+    assertEquals("pad 5 characters to end of String", "infernoaaaaa", helper.pad(-5, 'a'));
+    assertEquals("pad no characters to String", "inferno", helper.pad(0, 'a'));
+
+    helper.setValue("");
+    assertEquals("pad a single character to an empty String", "a", helper.pad(1, 'a'));
+  }
 }
